@@ -38,3 +38,52 @@ public:
         return returnvec;       
     }
 };
+
+
+Adding below whole solution for online GDB.com editor (Choose C++14) since smart pointers are recognized from there onwards
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <memory>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+class Solution {
+    
+public:
+vector<int> numberGame(vector<int>& nums) {
+    vector<int> returnvec; 
+    std::sort(nums.begin(), nums.end());
+    while (!nums.empty()) {
+        int alice = nums.front();
+        nums.erase(nums.begin());
+
+        int bob = nums.front();
+        nums.erase(nums.begin());
+
+        returnvec.push_back(bob);
+        returnvec.push_back(alice);
+    }
+    return returnvec;       
+}
+};
+
+int main()
+{
+    cout << "Soltion with static arrays" << "\n";
+    unique_ptr<Solution> obj = make_unique<Solution>();
+    vector<int> input = {5,4,2,3};
+    vector<int> result = obj->numberGame(input);
+    cout << "final output" << "\n";
+    for (int num : result) {
+        cout << num << " ";
+    }
+    return 0;
+}
