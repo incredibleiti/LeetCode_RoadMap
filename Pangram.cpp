@@ -45,3 +45,26 @@ public:
         return result;
     }
 };
+
+/////////////////////////////////// Or optimized one////////////////////////////////////////////////////////////////
+bool checkIfPangram(std::string sentence) {
+    if (sentence.length() < 26) {
+        return false;  // Quick check: if length is less than 26, it can't be a pangram
+    }
+
+    std::vector<bool> seen(26, false);  // Track presence of each letter
+    int uniqueCount = 0;  // Count of unique letters found
+
+    for (char c : sentence) {
+        int index = c - 'a';  // Convert character to alphabet index (0-25)
+        if (!seen[index]) {
+            seen[index] = true;
+            uniqueCount++;
+            if (uniqueCount == 26) {
+                return true;  // All letters found, return early
+            }
+        }
+    }
+
+    return false;  // Not all letters were found
+}
