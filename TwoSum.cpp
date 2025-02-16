@@ -42,3 +42,29 @@ public:
 ======================= Time complexity=======================
 Inner loop and outer loop in worst case run O(N) so twice loop O(N^2)
 Space is extra array = O(1) //onl storing indices
+
+/////////////////////// Solution 2////////////////////////////////////////////////////////
+////////// Avoiding double loop////////////////////////////////////
+
+vector<int> twoSum(vector<int>& nums, int target) {
+
+    vector<int> res;   
+    int index = 0;
+    int val = nums[index];
+    for(int i=1; i< nums.size(); ++i) {
+        if((target - nums[i]) == val) {
+            res.push_back(index);
+            res.push_back(i);
+            break;
+        } else {
+            index = i;
+            val = nums[i];
+        }
+    }
+    return res;
+        
+}
+======================= Time complexity=======================
+One loop so time complexity is O(N) -> worst case and best case O(1)
+Space is extra array = O(1) //onl storing indices
+
