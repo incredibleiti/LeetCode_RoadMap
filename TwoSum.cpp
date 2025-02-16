@@ -68,3 +68,25 @@ vector<int> twoSum(vector<int>& nums, int target) {
 One loop so time complexity is O(N) -> worst case and best case O(1)
 Space is extra array = O(1) //onl storing indices
 
+
+==================== Solution 3======================================
+
+ vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int,int> numMap; // value, index
+    for (int i =0; i < nums.size(); ++i) {
+        int temp = target - nums[i]; //value
+
+        if(numMap.find(temp) !=numMap.end()) { //go to end and find it 
+            return {numMap[temp],i}; //inde of temp, and current index
+        }
+
+        numMap[nums[i]] = i; //store in  Map
+    }
+
+    return {};        
+}
+
+======================= Time complexity=======================
+Linear Search for O(N)
+Unordered Map O(N)
+
