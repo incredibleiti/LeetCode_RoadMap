@@ -39,7 +39,7 @@ nums = {3, 2, 2, 3, 4, 3}
 val = 4
 k = 0
 
-i	nums[i]	Condition (nums[i] != val)	Action	Updated nums	k
+i nums[i] Condition (nums[i] != val)   Action	               Updated nums	       k
 0	3	✅ True (3 != 4)	Place 3 at nums[k]	{3, 2, 2, 3, 4, 3}	1
 1	2	✅ True (2 != 4)	Place 2 at nums[k]	{3, 2, 2, 3, 4, 3}	2
 2	2	✅ True (2 != 4)	Place 2 at nums[k]	{3, 2, 2, 3, 4, 3}	3
