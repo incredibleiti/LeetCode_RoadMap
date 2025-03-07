@@ -76,4 +76,20 @@ Sorting Each Word (O(K log K)): Happens inside the inner loop.
 Thus, the overall complexity is:
 
 𝑂(𝑁2 𝐾log𝐾)
+=========================Using HashMaps====================================
+ vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>> result;
+        unordered_map<string,vector<string>> strsMap;
+        for(int i=0; i< strs.size(); ++i) {
+            string _sorttemp = strs[i]; //make a copy
+            sort(_sorttemp.begin(), _sorttemp.end());
+            strsMap[_sorttemp].push_back(strs[i]);
+        }
+
+        for(auto val: strsMap) {
+            result.push_back(val.second);
+        }
+        return result;
+    }
+O(N K log K)
 
