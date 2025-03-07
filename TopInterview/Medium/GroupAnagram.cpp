@@ -93,3 +93,9 @@ Thus, the overall complexity is:
     }
 O(N K log K)
 
+Total Time Complexity
+Sorting Each Word → O(K log K)
+Looping Through N Strings → O(N)
+Hash Map Insertions → O(N)
+Extracting Data from HashMap → O(N)
+
