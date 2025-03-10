@@ -51,3 +51,41 @@ public:
     }
 };
 ==================== Time complexity is O(nlog n)
+
+Then made:
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+       if (nums.empty()) return 0;
+
+    unordered_set<int> numSet(nums.begin(), nums.end()); // Store numbers in a hash set
+    int longestSeq = 0;
+
+    for (int num : numSet) {
+        // Only start sequence if num-1 is not in the set (ensures starting point)
+        if (numSet.find(num - 1) == numSet.end()) {
+            int currentNum = num;
+            int currentSeq = 1;
+
+            // Count consecutive numbers
+            while (numSet.find(currentNum + 1) != numSet.end()) {
+                currentNum++;
+                currentSeq++;
+            }
+
+            longestSeq = max(longestSeq, currentSeq);
+        }
+    }
+
+    return longestSeq;
+    }
+};
+
+Time Complexity Analysis:
+O(n) for inserting elements into the set.
+O(n) for iterating over the set (each number is visited once).
+O(1) lookup time per number in unordered_set.
+Total: O(n) time complexity.
+Space Complexity:
+O(n) (for storing elements in unordered_set).
