@@ -30,3 +30,16 @@ public:
     }
 };
 
+But this will fail when array is [1,2] or [0,3] or [0,2,3] etc.
+since we check only when size is minimum 3, or when first index will be zero than it cannot even jump.
+==============================================
+ ================ Final O(n)======================
+ bool canJump(vector<int>& nums) {
+        int scope = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (i > scope) return false;
+            scope = max(scope, i + nums[i]);
+        }
+        return true;
+    }
+
