@@ -24,3 +24,29 @@
 // Input: nums = [0,0,0]
 // Output: [[0,0,0]]
 // Explanation: The only possible triplet sums up to 0.
+
+
+=========================================================== Brut Force ==========================
+
+ class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> result;
+        sort(nums.begin(), nums.end());
+        set<vector<int>> set;
+        for(int i=0; i<nums.size() - 2; ++i) {
+            for(int j=i+1; j<nums.size() - 1; ++j) {
+                for(int k=j+1; k<nums.size(); ++k) {
+                    if((nums[i] + nums[j] + nums[k] == 0) && i != j && j != k && k != i) {
+                        set.insert({nums[i], nums[j], nums[k]});
+                    }
+                }
+            }
+        }
+
+        for(auto it : set){
+            result.push_back(it);
+        }
+        return result;
+    }
+};
